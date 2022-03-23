@@ -57,6 +57,10 @@ public class Player : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        else if (!jump && groundedPlayer && direction.magnitude >= 0.1f) {
+            // Make small jump effect when player walking
+            playerVelocity.y += Mathf.Sqrt(jumpHeight/7.5f * -3.0f * gravityValue);
+        }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
