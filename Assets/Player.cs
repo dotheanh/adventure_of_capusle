@@ -14,10 +14,26 @@ public class Player : MonoBehaviour
     public Joystick joystick;
 
     public Joybutton joybutton;
+    protected bool jump;
+    private float jumpHeight = 1.0f;
+    private bool groundedPlayer;
+    private float gravityValue = -9.81f;
+    private Vector3 playerVelocity;
 
     // Update is called once per frame
     void Update()
     {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+        if (!jump && joybutton.Pressed) {
+            jump = true;
+        }
+        else if (jump && !joybutton.Pressed) {
+            jump = false;
+        }
 
         // float horizontalInput = Input.GetAxisRaw("Horizontal");
         // float verticalInput = Input.GetAxisRaw("Vertical");
@@ -35,5 +51,14 @@ public class Player : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
+
+        // Changes the height position of the player..
+        if (jump && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 }
