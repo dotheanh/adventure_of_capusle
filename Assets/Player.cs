@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     float turnSmoothVelocity;
     public Transform mainCamera;
 
+    public Joystick joystick;
+
+    public Joybutton joybutton;
+
     // Update is called once per frame
     void Update()
     {
