@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    private const bool IS_TEST_MODE = true;
     public GameObject player;
     public KeyItem keyItem1, keyItem2, keyItem3;
     private List<KeyItem> keyItems;
     public Text TextGameInfo;
+    public GameObject portalDoor;
 
     private int keyItemTotal;
     
@@ -18,6 +20,7 @@ public class GameController : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
         StartCoroutine(SpawnKeyItems());
+        portalDoor.SetActive(false);
 
     }
 
@@ -26,7 +29,12 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // spawn key items to the forest
-        keyItems = new List<KeyItem> { keyItem1, keyItem2, keyItem3 };
+        if (IS_TEST_MODE) {
+            keyItems = new List<KeyItem> { keyItem1 };
+        }
+        else {
+            keyItems = new List<KeyItem> { keyItem1, keyItem2, keyItem3 };
+        }
         keyItemTotal = keyItems.Count;
         TextGameInfo.text = "Find all " + keyItemTotal + " key-items to complete this level.";
         foreach(KeyItem keyItem in keyItems)
@@ -74,7 +82,10 @@ public class GameController : MonoBehaviour
 
     IEnumerator OnLevelCompleted()
     {
+        portalDoor.SetActive(true);
         yield return new WaitForSeconds(1);
         TextGameInfo.text = "Congratulations! You have completed the level.";
+        player.transform.position = portalDoor.transform.position + new Vector3(-3, 0, 3); // move player to front of the door
+        player.transform.LookAt(portalDoor.transform.position);
     }
 }
