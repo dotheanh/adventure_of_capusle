@@ -27,4 +27,9 @@ public class KeyItem : MonoBehaviour
     {
         
     }
+
+    void OnCollisionEnter(Collision hit)
+    {
+        //Debug.Log(hit.transform.gameObject.tag);
+    }
 }
