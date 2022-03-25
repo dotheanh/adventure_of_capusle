@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
             float dist = Vector3.Distance(keyItem.transform.position, player.transform.position);
             if (dist < 3) 
             {
-                Destroy(keyItem.gameObject, 1);
+                Destroy(keyItem.gameObject);
                 keyItems.RemoveAt(i);
                 i--;
                 Debug.Log("Congrat, you found it");
