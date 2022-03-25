@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 630831509}
   - component: {fileID: 630831508}
   - component: {fileID: 630831507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Minimap Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 6282890686848834299dfde5a3abf9e9, type: 2}
   m_TargetDisplay: 0
@@ -1973,7 +1973,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2068,6 +2068,7 @@ MonoBehaviour:
   keyItem3: {fileID: 1720916499}
   TextGameInfo: {fileID: 406877155}
   portalDoor: {fileID: 2115345037}
+  spotlightPrefab: {fileID: 350993774695754770, guid: 6e2ffc38f4a69694dacc7d8d49b2370d, type: 3}
 --- !u!4 &1121418172
 Transform:
   m_ObjectHideFlags: 0

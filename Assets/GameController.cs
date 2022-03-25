@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private const bool IS_TEST_MODE = true;
+    private const bool IS_TEST_MODE = false;
     public GameObject player;
     public KeyItem keyItem1, keyItem2, keyItem3;
     private List<KeyItem> keyItems;
@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject portalDoor;
 
     private int keyItemTotal;
+    public GameObject spotlightPrefab;
     
     void Start()
     {
@@ -48,7 +49,18 @@ public class GameController : MonoBehaviour
                                                 randomPositiveZ*Random.Range(min, max));
             Debug.Log("spawnPosition " + spawnPosition.x + ", " + spawnPosition.y + ", " + spawnPosition.z);
             keyItem.SetSpawnPosition(spawnPosition);
+           
+           AddSpotlightToObjects(keyItem.gameObject);
         }
+        
+        AddSpotlightToObjects(player);
+    }
+
+    void AddSpotlightToObjects(GameObject gameObject)
+    {
+        // add spotlight to object, easier to see in minimap
+        GameObject child = GameObject.Instantiate(spotlightPrefab);
+        child.transform.SetParent(gameObject.transform, false); // set worldPositionStays to false, then it use local position
     }
 
     // Update is called once per frame
