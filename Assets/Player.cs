@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
 
         // float horizontalInput = Input.GetAxisRaw("Horizontal");
         // float verticalInput = Input.GetAxisRaw("Vertical");
-        float horizontalInput = joystick.Horizontal;
-        float verticalInput = joystick.Vertical;
+        float horizontalInput = joystick.Horizontal + Input.GetAxisRaw("Horizontal");
+        float verticalInput = joystick.Vertical + Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
         if (direction.magnitude >= 0.1f)    // direction.magnitude = length of vector, use to prevent micro move noising
