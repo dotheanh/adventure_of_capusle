@@ -52,8 +52,6 @@ public class GameController : MonoBehaviour
            
            AddSpotlightToObjects(keyItem.gameObject);
         }
-        
-        AddSpotlightToObjects(player);
     }
 
     void AddSpotlightToObjects(GameObject gameObject)
