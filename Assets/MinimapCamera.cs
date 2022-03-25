@@ -38,6 +38,7 @@ public class MinimapCamera : MonoBehaviour
     public void ZoomIn()
     {
         cam.orthographicSize -= 5;
+        if (cam.orthographicSize < 0) cam.orthographicSize = 0;
     }
     public void ZoomOut()
     {
