@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -95,7 +96,8 @@ public class GameController : MonoBehaviour
         portalDoor.SetActive(true);
         yield return new WaitForSeconds(1);
         TextGameInfo.text = "Congratulations! You have completed the level.";
-        player.transform.position = portalDoor.transform.position + new Vector3(-3, 0, 3); // move player to front of the door
-        player.transform.LookAt(portalDoor.transform.position);
+        // player.transform.position = portalDoor.transform.position + new Vector3(-3, 0, 3); // move player to front of the door
+        // player.transform.LookAt(portalDoor.transform.position);
+        SceneManager.LoadScene("WorldsScene");
     }
 }
