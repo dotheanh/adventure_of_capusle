@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(SpawnKeyItems());
         portalDoor.SetActive(false);
+        TextGameInfo.gameObject.SetActive(false);   // temp hide the info
 
     }
 
