@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    private const bool IS_TEST_MODE = false;
+    private const bool IS_TEST_MODE = true;
     public GameObject player;
     public KeyItem keyItem1, keyItem2, keyItem3;
     private List<KeyItem> keyItems;
@@ -96,8 +96,17 @@ public class GameController : MonoBehaviour
         portalDoor.SetActive(true);
         yield return new WaitForSeconds(1);
         TextGameInfo.text = "Congratulations! You have completed the level.";
-        // player.transform.position = portalDoor.transform.position + new Vector3(-3, 0, 3); // move player to front of the door
-        // player.transform.LookAt(portalDoor.transform.position);
+        player.transform.position = portalDoor.transform.position + new Vector3(-3, 0, 3); // move player to front of the door
+        player.transform.LookAt(portalDoor.transform.position);
+        
+        StartCoroutine(ChangeScene());
+    }
+    
+    IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(3);
+
         SceneManager.LoadScene("WorldsScene");
     }
+
 }
